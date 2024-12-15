@@ -2,7 +2,7 @@ use gpui::{div, Element, Render, Subscription, View, ViewContext, WeakView};
 use itertools::Itertools;
 use workspace::{item::ItemHandle, ui::prelude::*, StatusItemView};
 
-use crate::{Vim, VimEvent, VimGlobals};
+use crate::{state::Mode, Vim, VimEvent, VimGlobals};
 
 /// The ModeIndicator displays the current mode in the status bar.
 pub struct ModeIndicator {
@@ -97,10 +97,32 @@ impl Render for ModeIndicator {
         };
 
         let vim_readable = vim.read(cx);
-        let mode = if vim_readable.temp_mode {
-            format!("(insert) {}", vim_readable.mode)
+        let (mode, color, background) = if vim_readable.temp_mode {
+            (
+                format!("(insert) {}", vim_readable.mode),
+                cx.theme().colors().vim_mode_indicator_insert_text,
+                cx.theme().colors().vim_mode_indicator_insert_background,
+            )
         } else {
-            vim_readable.mode.to_string()
+            let (color, background) = match vim_readable.mode {
+                Mode::Normal | Mode::HelixNormal => (
+                    cx.theme().colors().vim_mode_indicator_normal_text,
+                    cx.theme().colors().vim_mode_indicator_normal_background,
+                ),
+                Mode::Insert => (
+                    cx.theme().colors().vim_mode_indicator_insert_text,
+                    cx.theme().colors().vim_mode_indicator_insert_background,
+                ),
+                Mode::Visual | Mode::VisualLine | Mode::VisualBlock => (
+                    cx.theme().colors().vim_mode_indicator_visual_text,
+                    cx.theme().colors().vim_mode_indicator_visual_background,
+                ),
+                Mode::Replace => (
+                    cx.theme().colors().vim_mode_indicator_replace_text,
+                    cx.theme().colors().vim_mode_indicator_replace_background,
+                ),
+            };
+            (vim_readable.mode.to_string(), color, background)
         };
 
         let current_operators_description = self.current_operators_description(vim.clone(), cx);
@@ -110,6 +132,8 @@ impl Render for ModeIndicator {
             .unwrap_or(&current_operators_description);
         Label::new(format!("{} -- {} --", pending, mode))
             .size(LabelSize::Small)
+            .color(Color::Custom(color))
+            .background(Color::Custom(background))
             .line_height_style(LineHeightStyle::UiLabel)
             .into_any_element()
     }

@@ -249,6 +249,18 @@ pub struct ThemeColors {
     // UI/Rich Text
     // ===
     pub link_text_hover: Hsla,
+
+    // ===
+    // Vim Mode Indicator
+    // ===
+    pub vim_mode_indicator_normal_text: Hsla,
+    pub vim_mode_indicator_normal_background: Hsla,
+    pub vim_mode_indicator_insert_text: Hsla,
+    pub vim_mode_indicator_insert_background: Hsla,
+    pub vim_mode_indicator_visual_text: Hsla,
+    pub vim_mode_indicator_visual_background: Hsla,
+    pub vim_mode_indicator_replace_text: Hsla,
+    pub vim_mode_indicator_replace_background: Hsla,
 }
 
 #[derive(EnumIter, Debug, Clone, Copy, AsRefStr)]
@@ -350,6 +362,14 @@ pub enum ThemeColorField {
     TerminalAnsiBrightWhite,
     TerminalAnsiDimWhite,
     LinkTextHover,
+    VimModeIndicatorNormalText,
+    VimModeIndicatorNormalBackground,
+    VimModeIndicatorInsertText,
+    VimModeIndicatorInsertBackground,
+    VimModeIndicatorVisualText,
+    VimModeIndicatorVisualBackground,
+    VimModeIndicatorReplaceText,
+    VimModeIndicatorReplaceBackground,
 }
 
 impl ThemeColors {
@@ -459,6 +479,22 @@ impl ThemeColors {
             ThemeColorField::TerminalAnsiBrightWhite => self.terminal_ansi_bright_white,
             ThemeColorField::TerminalAnsiDimWhite => self.terminal_ansi_dim_white,
             ThemeColorField::LinkTextHover => self.link_text_hover,
+            ThemeColorField::VimModeIndicatorNormalText => self.vim_mode_indicator_normal_text,
+            ThemeColorField::VimModeIndicatorNormalBackground => {
+                self.vim_mode_indicator_normal_background
+            }
+            ThemeColorField::VimModeIndicatorInsertText => self.vim_mode_indicator_insert_text,
+            ThemeColorField::VimModeIndicatorInsertBackground => {
+                self.vim_mode_indicator_insert_background
+            }
+            ThemeColorField::VimModeIndicatorVisualText => self.vim_mode_indicator_visual_text,
+            ThemeColorField::VimModeIndicatorVisualBackground => {
+                self.vim_mode_indicator_visual_background
+            }
+            ThemeColorField::VimModeIndicatorReplaceText => self.vim_mode_indicator_replace_text,
+            ThemeColorField::VimModeIndicatorReplaceBackground => {
+                self.vim_mode_indicator_replace_background
+            }
         }
     }
 

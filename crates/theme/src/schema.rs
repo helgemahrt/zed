@@ -948,6 +948,38 @@ impl ThemeColorsContent {
                 .link_text_hover
                 .as_ref()
                 .and_then(|color| try_parse_color(color).ok()),
+            vim_mode_indicator_normal_text: self
+                .text
+                .as_ref()
+                .and_then(|color| try_parse_color(color).ok()),
+            vim_mode_indicator_normal_background: self
+                .status_bar_background
+                .as_ref()
+                .and_then(|color| try_parse_color(color).ok()),
+            vim_mode_indicator_insert_text: self
+                .text
+                .as_ref()
+                .and_then(|color| try_parse_color(color).ok()),
+            vim_mode_indicator_insert_background: self
+                .status_bar_background
+                .as_ref()
+                .and_then(|color| try_parse_color(color).ok()),
+            vim_mode_indicator_visual_text: self
+                .text
+                .as_ref()
+                .and_then(|color| try_parse_color(color).ok()),
+            vim_mode_indicator_visual_background: self
+                .status_bar_background
+                .as_ref()
+                .and_then(|color| try_parse_color(color).ok()),
+            vim_mode_indicator_replace_text: self
+                .text
+                .as_ref()
+                .and_then(|color| try_parse_color(color).ok()),
+            vim_mode_indicator_replace_background: self
+                .status_bar_background
+                .as_ref()
+                .and_then(|color| try_parse_color(color).ok()),
         }
     }
 }

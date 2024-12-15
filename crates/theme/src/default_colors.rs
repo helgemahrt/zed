@@ -115,6 +115,14 @@ impl ThemeColors {
             terminal_ansi_dim_cyan: cyan().light().step_10(),
             terminal_ansi_dim_white: neutral().light().step_11(),
             link_text_hover: orange().light().step_10(),
+            vim_mode_indicator_normal_text: neutral().light().step_12(),
+            vim_mode_indicator_normal_background: neutral().light().step_2(),
+            vim_mode_indicator_insert_text: neutral().light().step_12(),
+            vim_mode_indicator_insert_background: neutral().light().step_2(),
+            vim_mode_indicator_visual_text: neutral().light().step_12(),
+            vim_mode_indicator_visual_background: neutral().light().step_2(),
+            vim_mode_indicator_replace_text: neutral().light().step_12(),
+            vim_mode_indicator_replace_background: neutral().light().step_2(),
         }
     }
 
@@ -221,6 +229,14 @@ impl ThemeColors {
             terminal_ansi_bright_white: neutral().dark().step_11(),
             terminal_ansi_dim_white: neutral().dark().step_10(),
             link_text_hover: orange().dark().step_10(),
+            vim_mode_indicator_normal_text: neutral().dark().step_12(),
+            vim_mode_indicator_normal_background: neutral().dark().step_2(),
+            vim_mode_indicator_insert_text: neutral().dark().step_12(),
+            vim_mode_indicator_insert_background: neutral().dark().step_2(),
+            vim_mode_indicator_visual_text: neutral().dark().step_12(),
+            vim_mode_indicator_visual_background: neutral().dark().step_2(),
+            vim_mode_indicator_replace_text: neutral().dark().step_12(),
+            vim_mode_indicator_replace_background: neutral().dark().step_2(),
         }
     }
 }
